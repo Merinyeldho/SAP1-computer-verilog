@@ -1,17 +1,18 @@
 // to obtain t states
-module state_counter (
-      input clock,
-      input res, output [5:0] q);
-    reg[5:0] a;
+module state_counter (t, clk, res);
+    input clk, res;
+    output reg [5:0] t = 6'b100000;
+
     always @(negedge clk or res)
-    if (reset)
-        a = 6'b000001;
- 
-      else
+    begin
+        if(res == 1)
+            t = 6'b100000;
+        else if(clk == 0) 
         begin
-        a <=  a<<1; 
-        a[0]<=a[5];
+            if(t == 6'b000001)
+                t = 6'b100000;
+            else
+                t = t >> 1;
         end
- 
-    assign q = a;
-    endmodule
+    end
+endmodule
