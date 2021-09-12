@@ -3,7 +3,7 @@
 `include "control_unit.v"
 `include "opcode_decoder.v"
 `include "program_counter.v"
-`include "counter.v"
+`include "t_state_counter.v"
 `include "posedge_dFlipflop.v"
 `include "Seven_segment.v"
 `include "mux.v"
